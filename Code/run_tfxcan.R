@@ -18,10 +18,6 @@ tfscores_file <- paste0(output_prefix, "_results/", output_prefix, "_variant_tfs
 out_dir <- paste0(output_prefix,"_results/")
 covariance_out <- paste0(out_dir,output_prefix,"_",chrom, "_",n_k_folds,"_",alpha, "_tfxcan_covariances.txt")
 expression <- readRDS(expression_RDS)
-weightcol <- c("gene","SNP_ID","ref","alt","beta","alpha")
-workingweight <- paste0(out_dir, output_prefix,"_",n_k_folds,"_",alpha,"_",chrom,"_tfxcan_weights.txt")
-write(weightcol, file = workingweight, ncol = 6, sep = "\t")
-
 groupings <- data.frame(c(row.names(expression)),c(row.names(expression)),
                         c(sample(1:n_k_folds, length(row.names(expression)),replace = T)),
                         c(sample(1:5, length(row.names(expression)), replace =T)))
